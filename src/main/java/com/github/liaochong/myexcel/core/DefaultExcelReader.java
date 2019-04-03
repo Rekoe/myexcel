@@ -21,6 +21,7 @@ import com.github.liaochong.myexcel.core.reflect.ClassFieldContainer;
 import com.github.liaochong.myexcel.utils.ReflectUtil;
 import com.github.liaochong.myexcel.utils.StringUtil;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
@@ -46,6 +47,7 @@ import java.util.stream.IntStream;
  * @author liaochong
  * @version 1.0
  */
+@Slf4j
 public class DefaultExcelReader {
 
     private static final int DEFAULT_SHEET_INDEX = 0;
@@ -152,6 +154,7 @@ public class DefaultExcelReader {
     private <T> List<T> getDataFromFile(Sheet sheet, Map<Integer, Field> fieldMap) {
         final int firstRowNum = sheet.getFirstRowNum();
         final int lastRowNum = sheet.getLastRowNum();
+        log.info("First row number：{}，Last row number：{}", firstRowNum, lastRowNum);
         if (lastRowNum < 0) {
             return Collections.emptyList();
         }

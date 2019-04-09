@@ -15,6 +15,9 @@
  */
 package com.github.liaochong.myexcel.core.annotation;
 
+import com.github.liaochong.myexcel.core.converter.Converter;
+import com.github.liaochong.myexcel.core.converter.DefaultConverter;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -70,4 +73,11 @@ public @interface ExcelColumn {
      * @return 默认值
      */
     String defaultValue() default "";
+
+    /**
+     * 转换类
+     *
+     * @return 转换类
+     */
+    Class<? extends Converter> converter() default DefaultConverter.class;
 }
